@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Quản Lý Học Viện</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- font awsesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- Css  -->
+    <link rel="stylesheet" href="./asset/style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="managerCard">
+          <div class="card-heder myCardHeaer">
+            <div class="row">
+              <div class="col-md-6 textHeader">
+                <h3 class="text-left text-primary font-weight-bold">
+                  Danh Sách
+                </h3>
+              </div>
+              <div class="groupButton mb-2 col-md-6">
+                <div class="text-right">
+                  <button
+                    id="btnAdd1"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >
+                    Thêm Thông Tin
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="addTable" class="body">
+            <div class="input_search mt-1">
+              <div class="input-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Loại Người Dùng"
+                  id="inputSearch"
+                />
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="ml-3">
+                <select class="form-control mb-2" id="select_show_info">
+                  <option>Default</option>
+                  <option value="Student">Student</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Customer">Customer</option>
+                </select>
+              </div>
+              <div class="col-md-12" id="renderTable"></div>
+              <table class="table table-bordered table-hover myTable">
+                <thead id="thead_show" class="text-primary">
+                  <tr class="text-center">
+                    <th>Họ và Tên</th>
+                    <th>Email</th>
+                    <th>Mã</th>
+                    <th>Địa chỉ</th>
+                    <th>Loại</th>
+                    <td>
+                      <i class="fa-solid fa-gear"></i>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody id="tbody_show2"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="footer"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Info</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form role="form" id="form_all">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa fa-address-book"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="name"
+                    name="name"
+                    id="name"
+                    class="form-control input-sm"
+                    placeholder="Họ và tên"
+                  />
+                </div>
+                <span class="sp-thongbao" id="tbTen"></span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa fa-envelope"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-control input-sm"
+                    placeholder="Email"
+                  />
+                </div>
+
+                <span class="sp-thongbao" id="tbEmail"></span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa-solid fa-location-dot"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="text"
+                    name="Address"
+                    id="address"
+                    class="form-control input-sm"
+                    placeholder="Địa Chỉ"
+                  />
+                </div>
+                <span class="sp-thongbao" id="tbAddress"></span>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa fa-briefcase"></i
+                    ></span>
+                  </div>
+                  <select class="form-control" id="type">
+                    <option value="">Chọn Đối Tượng</option>
+                    <option value="Student">Student</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Customer">Customer</option>
+                  </select>
+                </div>
+
+                <span class="sp-thongbao" id="tbType"></span>
+              </div>
+
+              <div class="form-group" id="student_math">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa-solid fa-plus"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="number"
+                    name="math"
+                    id="math"
+                    class="form-control"
+                    placeholder="Toán"
+                  />
+                </div>
+
+                <span class="sp-thongbao" id="tbMath"></span>
+              </div>
+
+              <div class="form-group" id="student_physics">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa-solid fa-wheelchair-move"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="number"
+                    name="physics"
+                    id="phys"
+                    class="form-control input-sm"
+                    placeholder="Lý"
+                  />
+                </div>
+                <span class="sp-thongbao" id="tbPhys"></span>
+              </div>
+
+              <div class="form-group" id="student_chemistry">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa-solid fa-vial"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="number"
+                    name="chemistry"
+                    id="chem"
+                    class="form-control input-sm"
+                    placeholder="Hóa"
+                  />
+                </div>
+                <span class="sp-thongbao" id="tbChem"></span>
+              </div>
+
+              <div class="form-group" id="employee_day">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa-solid fa-calendar-days"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="number"
+                    name="day"
+                    id="dayWork"
+                    class="form-control input-sm"
+                    placeholder="Số Ngày Làm"
+                  />
+                </div>
+                <span class="sp-thongbao" id="tbdDayWork"></span>
+              </div>
+
+              <div class="form-group" id="employee_salary">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa-solid fa-money-bill"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="number"
+                    name="salary"
+                    id="salary"
+                    class="form-control input-sm"
+                    placeholder="lương"
+                  />
+                </div>
+                <span class="sp-thongbao" id="tbSalary"></span>
+              </div>
+              <div class="form-group" id="customer_company">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa-regular fa-building"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="name"
+                    name="company"
+                    id="cty"
+                    class="form-control input-sm"
+                    placeholder="Tên Công Ty"
+                  />
+                </div>
+                <span class="sp-thongbao" id="tbCty"></span>
+              </div>
+
+              <div class="form-group" id="customer_bill">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa-solid fa-money-bills"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="number"
+                    name="bill"
+                    id="bill"
+                    class="form-control input-sm"
+                    placeholder="Giá Trị Hóa Đơn"
+                  />
+                </div>
+                <span class="sp-thongbao" id="tbBill"></span>
+              </div>
+
+              <div class="form-group" id="customer_rate">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="fa-solid fa-star"></i
+                    ></span>
+                  </div>
+                  <select class="form-control" id="rate">
+                    <option value="1_Start">1 star</option>
+                    <option value="2_Start">2 star</option>
+                    <option value="3_Start">3 star</option>
+                    <option value="4_Start">4 star</option>
+                    <option value="5_Start">5 star</option>
+                  </select>
+                </div>
+                <span class="sp-thongbao" id="tbRate"></span>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btnAddPers" type="button" class="btn btn-success">
+              Thêm
+            </button>
+            <button id="btnUppdatePers" type="button" class="btn btn-success">
+              Cập Nhật
+            </button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
