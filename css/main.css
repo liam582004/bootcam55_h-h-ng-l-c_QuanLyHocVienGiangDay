@@ -6,6 +6,7 @@
 
 #SapXepGiam{
 	display: none;
+  cursor: pointer;
 }
 
 #content{
@@ -19,4 +20,17 @@
 
 .myCardHeader, .myCardFooter{
 	background-color: transparent;       
+}
+#SapXepTang {
+  cursor: pointer;
+}
+#DoanThang {
+display: inline-block;
+}
+#HoVaTen {
+margin-top: 10px;
+}
+#SapXep {
+  width: 20px;
+  display: flex;
 }

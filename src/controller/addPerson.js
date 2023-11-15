@@ -17,7 +17,6 @@ export function getPerson() {
   isValid = [
     checkEmpty(id, 'Vui long nhap id', '#tbID'),
     checkEmpty(name, 'Vui long nhap name', '#tbName'),
-
     checkEmpty(email, 'Vui long nhap email', '#tbEmail'),
     checkEmail(email, 'Vui long nhap email hop le', '#tbEmail'),
     checkEmpty(address, 'Vui long nhap address', '#tbAddress'),

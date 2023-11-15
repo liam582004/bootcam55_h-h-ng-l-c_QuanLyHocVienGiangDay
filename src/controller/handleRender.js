@@ -17,6 +17,7 @@ export function handleRender(arr) {
     <button class="btn btn-success" id="btnView" data-toggle="modal" data-target="#myModal" keyPerson="${
       item.ma
     }" >View</button>
+    
     </td> 
     </tr>`
     );

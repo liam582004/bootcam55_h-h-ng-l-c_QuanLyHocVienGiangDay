@@ -7,4 +7,8 @@ export default class Employee extends Person {
     this.workingDays = workingDays;
     this.salaryDay = salaryDay;
   }
+  sumSalary() {
+    let sumSalary = Number(this.salaryDay) * Number(this.workingDays);
+    return sumSalary.toLocaleString();
+  }
 }
